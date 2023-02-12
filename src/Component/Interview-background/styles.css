@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+}
+
+.menu {
+  float: left;
+  width: 20%;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.menu a {
+  padding: 8px;
+  margin-top: 7px;
+  display: block;
+  width: 100%;
+  color: black;
+}
+
+.main {
+  float: left;
+  width: 60%;
+  padding: 0 20px;
+}
+
+.right {
+  float: left;
+  width: 20%;
+  padding: 15px;
+  margin-top: 7px;
+  text-align: center;
+}
+
+/* ------------buttons---------------*/
+.btn:link,
+.btn:visited {
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 300;
+    padding: 10px 30px;
+    border-radius: 200px;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+.btn-full:link,
+.btn-full:visited {
+    background-color: #e67e22;
+    border: 1px solid #e67e22;
+    color: #fff;
+    margin-right: 15px;
+}
+.btn-ghost:link,
+.btn-ghost:visited {
+    border: 1px solid #e67e22;
+    color: #e67e22;
+    
+}
+.btn:hover,
+.btn:active {
+    background-color: #cf6d17;
+}
+.btn-full:hover,
+.btn-full:active {
+    border: 1px solid #cf6d17;
+}
+.btn-ghost:hover,
+.btn-ghost:active {
+    border: 1px solid #cf6d17;
+    color: #fff;
+}
+
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+  .menu {
+    margin-top: 0;
+  }
+}
