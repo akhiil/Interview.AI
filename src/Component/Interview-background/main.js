@@ -6,7 +6,6 @@ import axios from "axios";
 import { HashLoader, FadeLoader } from "react-spinners";
 import BuyMeCoffee from "../../Component/image/buymeacoffee.jpeg";
 import Scanner from "../image/Scanner.jpeg";
-import Timer from "../timer";
 
 const App = () => {
   const navigate = useNavigate();
@@ -28,6 +27,10 @@ const App = () => {
     }
   }, []);
 
+  const goToSection = (value) => {
+    window.location.replace(`/#${value}`);
+  };
+
   const location = useLocation();
 
   // console.log({ questionTerms, feedbackText });
@@ -35,10 +38,15 @@ const App = () => {
 
   const getQuestions = async () => {
     setShowLoader(true);
+    // const headers = {
+    //   "Content-Type": "application/json",
+    //   Authorization: 
+    //     "Bearer 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",
+    // };
     const headers = {
       "Content-Type": "application/json",
       Authorization:
-        "Bearer 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",
+        "Bearer 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",
     };
     const body = {
       model: "text-davinci-003",
@@ -50,15 +58,16 @@ const App = () => {
     await axios
       .post("https://api.openai.com/v1/completions", body, { headers })
       .then((res) => {
-        // console.log({ res });
+        console.log("question ka response", res);
         setShowLoader(false);
         setQuestionTerms(res.data.choices[0].text);
         setQuestionNumber((prev) => prev + 1);
         setFeedbackBlocker(false);
       })
       .catch((err) => {
+        alert("error in getting question")
         setShowLoader(false);
-        console.log({ err });
+        console.log("question ka response error", err);
       });
   };
 
@@ -225,6 +234,7 @@ const App = () => {
         }}
       >
         <a
+          href="#supportFocus"
           style={{ cursor: "pointer" }}
           onClick={(e) => {
             e.preventDefault();
@@ -236,6 +246,7 @@ const App = () => {
 
         {openPaymentOptions ? (
           <div
+            id="supportFocus"
             style={{
               backgroundColor: "#e5e5e5",
               textAlign: "center",
